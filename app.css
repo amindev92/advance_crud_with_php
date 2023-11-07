@@ -4,3 +4,6 @@
     box-sizing: border-box;
 }
 
+.taskManager{
+    width: calc(100% - 250px);
+}
