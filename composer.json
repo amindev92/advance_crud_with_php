@@ -1,0 +1,17 @@
+{
+    "name": "amin/advance_crud",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Amin\\AdvanceCrud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Amin Ataei",
+            "email": "amin.ataei92@gmail.com"
+        }
+    ],
+    "require": {}
+}
