@@ -2,12 +2,26 @@
 
 defined("BASE_PATH") or displayMessage("Permission Denied!");
 
-
-function redirect($url){
-    header("Location: ". $url);
+function getCurrentUser(){
+    return 1;
 }
 
-function siteUrl($uri = ""){
+function isAjaxRequest()
+{
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        return true;
+    }
+    return false;
+}
+
+
+function redirect($url)
+{
+    header("Location: " . $url);
+}
+
+function siteUrl($uri = "")
+{
     return BASE_URL . $uri;
 }
 
@@ -40,7 +54,7 @@ function displayMessage($msg)
 function displayInformation($data)
 {
 
-    
+
 
     echo "<div style='
         background-color: wheat;
@@ -57,4 +71,3 @@ function displayInformation($data)
     var_dump($data);
     echo "</div>";
 }
-
