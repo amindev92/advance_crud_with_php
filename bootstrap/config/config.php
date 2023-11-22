@@ -1,11 +1,11 @@
 
 <?php
 
-$database_config = [
-    "host" => "localhost",
-    "user" => "root",
-    "password" => "",
-    "database" => "advance_crud"
+$databaseConfig = (object)[
+    'host' => "localhost",
+    'user' => "root",
+    'password' => "",
+    'dbname' => "advance_crud"
 ];
 
 
