@@ -3,6 +3,16 @@
 defined("BASE_PATH") or displayMessage("Permission Denied!");
 
 
+function redirect($url){
+    header("Location:". $url);
+}
+
+function siteUrl($uri = ""){
+    return BASE_URL . $uri;
+}
+
+
+
 function displayMessage($msg)
 {
     $errMsg = "
