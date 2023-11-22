@@ -4,7 +4,7 @@ defined("BASE_PATH") or displayMessage("Permission Denied!");
 
 
 function redirect($url){
-    header("Location:". $url);
+    header("Location: ". $url);
 }
 
 function siteUrl($uri = ""){
@@ -35,3 +35,26 @@ function displayMessage($msg)
     echo $errMsg;
     die();
 }
+
+
+function displayInformation($data)
+{
+
+    
+
+    echo "<div style='
+        background-color: wheat;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 2rem;
+    padding: 14px 12px;
+    font-weight: bold;
+    position: relative;
+    min-height: 30vh;
+    z-index: 10;
+'>";
+    var_dump($data);
+    echo "</div>";
+}
+
