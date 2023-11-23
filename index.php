@@ -3,9 +3,16 @@
 include "bootstrap/init.php";
 defined("BASE_PATH") or displayMessage("Permission Denied!");
 
+if (isset($_GET["logout"])) {
+    logout();
+}
+
+
+$user = isLoggedInUser();
+// displayInformation($user);
 
 if (!isLoggedIn()) {
-    redirect(siteUrl("views/v_auth.php"));
+    redirect(siteUrl("auth.php"));
 }
 
 if (isset($_GET["delete_folder"]) && is_numeric($_GET["delete_folder"])) {
