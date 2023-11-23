@@ -28,6 +28,19 @@ switch ($_POST["action"]) {
         toggleIsDone($_POST["taskId"]);
         break;
 
+    case 'addTask':
+
+        if (!isset($_POST["taskName"]) && strlen($_POST["taskName"] < 3)) {
+            echo "Please Enter bigger Title for task ...";
+            die();
+        }
+        if (!isset($_POST["folderId"]) && !is_numeric($_POST["folderId"])) {
+            echo "This task Doesn't Have in Task Manager ... ";
+            die();
+        }
+        addTask($_POST["folderId"], $_POST["taskName"]);
+        break;
+
     default:
         displayMessage("Invalid Requset!");
         break;

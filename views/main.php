@@ -105,16 +105,32 @@
     </nav>
 
     <section class="taskManager relative left-1/4 h-screen pt-6 ">
-        <div class="topMenu flex justify-between pl-14 pt-4 fixed top-0 w-4/6">
-            <div class="topMenu__buttons">
-                <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add
+    <div class="topMenu flex justify-between pl-14 pt-4 fixed top-0 w-4/6">
+            <div class="topMenu__buttons flex justify-between">
+
+                <div class="addTask mr-4">
+                    <input type="text" id="addTaskInput" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+
+                <button type="button" id="addTaskBtn" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-16 mb-2">Add
                     New Task</button>
                 <button type="button" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Delete</button>
 
             </div>
             <div class="topMenu__img w-12">
-                <img src="<?php echo BASE_URL; ?>assets/img/2.jpg" class="w-full h-full rounded-full">
+                <!-- <img src="<?php echo $user->image; ?>" id="topMenu__img-avatar" class="w-full h-full rounded-full "> -->
+                <div class="subMenu" id="subMenu">
+                    <div class="subMenu__container">
+                        <div class="user__info">
+                            <!-- <span><?php echo $user->name; ?></span> -->
+                        </div>
+                        <div class="handleUser">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
         <div class="tasks flex flex-col items-center justify-center pt-4 w-full mt-24 mx-auto px-6">
@@ -169,6 +185,11 @@
 
             var addFolderInput = $("#addFolderInput");
             var addFolderBtn = $("#addFolderBtn");
+
+            var addTaskInput = $("#addTaskInput");
+            var addTaskBtn = $("#addTaskBtn");
+
+
             addFolderBtn.click(function() {
                 $.ajax({
                     url: 'process/ajaxHandler.php',
@@ -184,6 +205,29 @@
                 })
             });
 
+            function addTaskHandler(event) {
+                event.stopPropagation();
+                $.ajax({
+                    url: 'process/ajaxHandler.php',
+                    method: 'post',
+                    data: {
+                        action: 'addTask',
+                        taskName: addTaskInput.val(),
+                        folderId: <?php echo $_GET["folder_id"] ?? 0; ?>
+                    },
+                    success: function(response) {
+                        // alert(response);
+                        location.reload();
+                    }
+                })
+            }
+
+            addTaskBtn.click(event=>addTaskHandler(event));
+            addTaskInput.on('keypress', function(event){
+                if (event.which == 13) {
+                    addTaskHandler(event);
+                }
+            })
 
             $("#isDoneBtn").click(function(e){
                 e.stopPropagation();

@@ -11,9 +11,16 @@ function toggleIsDone($id){
     return $stmt->rowCount();
 }
 
+function addTask($folderId, $taskName){
+    global $pdo;
+    $sqlCommand = "INSERT INTO task (title, user_id, folder_id) VALUES (:title, :user_id, :folderId)";
+    $stmt = $pdo -> prepare($sqlCommand);
+    $stmt -> execute([":title"=>$taskName, ":folderId" => $folderId, ":user_id"=> getCurrentUser()]);
+    return $stmt->rowCount();
+}
+
 function addFolder($folderName){
     global $pdo;
-    $id = 1;
     $sqlCommand = "INSERT INTO folder (name, user_id) VALUES (:folderName, :user_id)";
     $stmt = $pdo -> prepare($sqlCommand);
     $stmt->bindValue(":folderName", $folderName);
