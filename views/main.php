@@ -123,87 +123,36 @@
                     :</span></h2>
 
             <ul class="grid w-full gap-6 md:grid-cols-3">
-                <li>
-                    <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div class="block">
-                            <div class="w-full text-lg font-semibold">Angular</div>
-                            <div class="w-full text-sm">A TypeScript-based web application framework.</div>
-                            <div class="task-status flex justify-between items-center w-full mt-4">
-                                <div class="flex self-center">
-                                    <input id="inline-checkbox" type="checkbox" value="" class="self-center w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
-                                    <label for="inline-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-                                </div>
 
-                                <button type="button" class=" basis-2/4 text-white bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Complete</button>
+                <?php foreach ($tasks as $task) : ?>
+                    <li style="position: relative;">
+                        <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div class="block w-full">
+                                <a href="?delete_task=<?php echo $task->id; ?>" style=" position: absolute;
+    right: 2rem;
+    font-size: 1.2rem;" onclick="return confirm('Are You Sure To delete This Item?')">
+                                    <i class="fa fa-times" aria-hidden="true">X</i>
+                                </a>
+                                <div class="w-full text-lg font-semibold"><?php echo $task->title; ?></div>
+                                <div class="w-full text-sm"><?php echo $task->created_at; ?></div>
+                                <div class="task-status flex justify-between items-center w-full mt-4">
+                                    <div class="flex align-center">
 
-                            </div>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div class="block">
-                            <div class="w-full text-lg font-semibold">Angular</div>
-                            <div class="w-full text-sm">A TypeScript-based web application framework.</div>
-                            <div class="task-status flex justify-between items-center w-full mt-4">
-                                <div class="flex self-center">
-                                    <input id="inline-checkbox" type="checkbox" value="" class="self-center w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
-                                    <label for="inline-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+
+                                        <button id="isDoneBtn" data-isDoneUserID="<?php echo $task->id; ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><?php echo $task->is_done ? "Done" : "In Progress"; ?></button>
+
+
+                                    </div>
+                                    <div class="flex align-center">
+                                        <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Finish</button>
+
+                                    </div>
                                 </div>
-                                <button type="button" class="basis-2/4 self-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">In
-                                    Progress</button>
                             </div>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div class="block">
-                            <div class="w-full text-lg font-semibold">Angular</div>
-                            <div class="w-full text-sm">A TypeScript-based web application framework.</div>
-                            <div class="task-status flex justify-between items-center w-full mt-4">
-                                <div class="flex self-center">
-                                    <input id="inline-checkbox" type="checkbox" value="" class="self-center w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
-                                    <label for="inline-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-                                </div>
-                                <button type="button" class="basis-2/4 self-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">In
-                                    Progress</button>
-                            </div>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div class="block">
-                            <div class="w-full text-lg font-semibold">Angular</div>
-                            <div class="w-full text-sm">A TypeScript-based web application framework.</div>
-                            <div class="task-status flex justify-between items-center w-full mt-4">
-                                <div class="flex self-center">
-                                    <input id="inline-checkbox" type="checkbox" value="" class="self-center w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
-                                    <label for="inline-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-                                </div>
-                                <button type="button" class="basis-2/4 self-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">In
-                                    Progress</button>
-                            </div>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label for="angular-option" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div class="block">
-                            <div class="w-full text-lg font-semibold">Angular</div>
-                            <div class="w-full text-sm">A TypeScript-based web application framework.</div>
-                            <div class="task-status flex justify-between items-center w-full mt-4">
-                                <div class="flex self-center">
-                                    <input id="inline-checkbox" type="checkbox" value="" class="self-center w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
-                                    <label for="inline-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-                                </div>
-                                <button type="button" class="basis-2/4 self-center text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">In
-                                    Progress</button>
-                            </div>
-                        </div>
-                    </label>
-                </li>
+                        </label>
+                    </li>
+                <?php endforeach; ?>
+
             </ul>
 
         </div>
@@ -215,28 +164,47 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function(){
+    <script>
+        $(document).ready(function() {
 
-        var addFolderInput = $("#addFolderInput");
-        var addFolderBtn = $("#addFolderBtn");
-        addFolderBtn.click(function() {
-            $.ajax({
-              url: 'process/ajaxHandler.php',
-              method: 'post',
-              data:{
-                action: 'addFolder',
-                folderName: addFolderInput.val()
-              },
-              success:function(response){
-                // alert(response);
-                location.reload();
-              }
+            var addFolderInput = $("#addFolderInput");
+            var addFolderBtn = $("#addFolderBtn");
+            addFolderBtn.click(function() {
+                $.ajax({
+                    url: 'process/ajaxHandler.php',
+                    method: 'post',
+                    data: {
+                        action: 'addFolder',
+                        folderName: addFolderInput.val()
+                    },
+                    success: function(response) {
+                        // alert(response);
+                        location.reload();
+                    }
+                })
+            });
+
+
+            $("#isDoneBtn").click(function(e){
+                e.stopPropagation();
+                $taskId = $(this).attr("data-isDoneUserID");
+                $.ajax({
+                    url: 'process/ajaxHandler.php',
+                    method: 'post',
+                    data: {
+                        action: 'toggleIsDone',
+                        taskId: $taskId
+                    },
+                    success: function(response){
+                        alert(response);
+                        location.reload();
+                    }
+                })
+
+
             })
         });
-    });
-    
-</script>
+    </script>
 
 </body>
 
